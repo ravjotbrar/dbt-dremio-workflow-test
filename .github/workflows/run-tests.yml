@@ -45,7 +45,7 @@ jobs:
           echo "DBT_TEST_USER_2=$DBT_TEST_USER_1" >> $GITHUB_ENV
           echo "DBT_TEST_USER_3=$DBT_TEST_USER_1" >> $GITHUB_ENV
       - name: Run pytest
-        run: pytest ./tests/functional/adapter/test_basic.py --profile dremio_cloud
+        run: pytest ./tests/functional/adapter/ --profile dremio_cloud
 
   run-softwareUP-test:
     runs-on: ubuntu-latest
@@ -61,9 +61,9 @@ jobs:
       - name: Install current dbt-dremio
         run: pip install -e .
       - name: Give permission
-        run: chmod +x ./.github/scripts/smoke-test.sh
+        run: chmod +x ./.github/scripts/smoke_test.sh
       - name: Run softwareUP test 
-        run: ./.github/scripts/smoke-test.sh softwareUP "$DREMIO_SOFTWARE_USER" "$DREMIO_PW" "$DREMIO_SOFTWARE_HOST" "$DREMIO_PORT"
+        run: ./.github/scripts/smoke_test.sh softwareUP "$DREMIO_SOFTWARE_USER" "$DREMIO_PW" "$DREMIO_SOFTWARE_HOST" "$DREMIO_PORT"
 
   run-softwarePAT-test:
     runs-on: ubuntu-latest
@@ -79,9 +79,9 @@ jobs:
       - name: Install current dbt-dremio
         run: pip install -e .
       - name: Give permission
-        run: chmod +x ./.github/scripts/smoke-test.sh
+        run: chmod +x ./.github/scripts/smoke_test.sh
       - name: Run softwarePAT test 
-        run: .github/scripts/smoke-test.sh softwarePAT "$DREMIO_SOFTWARE_USER" "$DREMIO_SOFTWARE_PAT" "$DREMIO_SOFTWARE_HOST" "$DREMIO_PORT"
+        run: .github/scripts/smoke_test.sh softwarePAT "$DREMIO_SOFTWARE_USER" "$DREMIO_SOFTWARE_PAT" "$DREMIO_SOFTWARE_HOST" "$DREMIO_PORT"
 
   run-cloud-test:
     runs-on: ubuntu-latest
@@ -97,6 +97,6 @@ jobs:
       - name: Install current dbt-dremio
         run: pip install -e .
       - name: Give permission
-        run: chmod +x ./.github/scripts/smoke-test.sh
+        run: chmod +x ./.github/scripts/smoke_test.sh
       - name: Run cloud test 
-        run: ./.github/scripts/smoke-test.sh cloud "$DREMIO_CLOUD_USER" "$DREMIO_CLOUD_PAT" "$DREMIO_CLOUD_HOST" "$DREMIO_CLOUD_PROJECT" true
+        run: ./.github/scripts/smoke_test.sh cloud "$DREMIO_CLOUD_USER" "$DREMIO_CLOUD_PAT" "$DREMIO_CLOUD_HOST" "$DREMIO_CLOUD_PROJECT" true
