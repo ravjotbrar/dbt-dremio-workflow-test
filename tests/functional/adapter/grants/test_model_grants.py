@@ -23,10 +23,10 @@ from dbt.tests.adapter.grants.test_model_grants import (
 from dbt.tests.util import run_dbt_and_capture, get_manifest, write_file, get_connection
 from tests.functional.adapter.grants.base_grants import BaseGrantsDremio
 from tests.utils.util import relation_from_name
-from flakey import flakey
+from flaky import flaky
 
 
-@flakey
+@flaky
 class TestViewGrantsDremio(BaseGrantsDremio, BaseModelGrants):
 
     # Overridden to only include view materialization
