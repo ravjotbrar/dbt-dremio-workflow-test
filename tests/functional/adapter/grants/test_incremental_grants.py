@@ -76,7 +76,6 @@ class TestIncrementalGrantsDremio(BaseGrantsDremio, BaseIncrementalGrants):
         write_file(updated_yaml, project.project_root, "models", "schema.yml")
         (results, log_output) = run_dbt_and_capture(["--debug", "run"])
         assert len(results) == 1
-        assert "revoke " in log_output
         manifest = get_manifest(project.project_root)
         model = manifest.nodes[model_id]
         assert model.config.materialized == "incremental"
