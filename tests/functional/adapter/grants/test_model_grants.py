@@ -23,14 +23,14 @@ from dbt.tests.adapter.grants.test_model_grants import (
 from dbt.tests.util import run_dbt_and_capture, get_manifest, write_file, get_connection
 from tests.functional.adapter.grants.base_grants import BaseGrantsDremio
 from tests.utils.util import relation_from_name
-from time import sleep
+from flakey import flakey
 
 
+@flakey
 class TestViewGrantsDremio(BaseGrantsDremio, BaseModelGrants):
 
     # Overridden to only include view materialization
     def test_view_table_grants(self, project, get_test_users):
-        sleep(2)
         # we want the test to fail, not silently skip
         test_users = get_test_users
         select_privilege_name = self.privilege_grantee_name_overrides()["select"]
