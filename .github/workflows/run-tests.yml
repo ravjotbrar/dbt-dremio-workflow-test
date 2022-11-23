@@ -48,7 +48,7 @@ jobs:
           echo "DBT_TEST_USER_2=$DBT_TEST_USER_1" >> $GITHUB_ENV
           echo "DBT_TEST_USER_3=$DBT_TEST_USER_1" >> $GITHUB_ENV
       - name: Run pytest
-        run: pytest ./tests/functional/adapter/grants/test_incremental_grants.py --profile dremio_cloud --exitfirst -vv
+        run: pytest ./tests/functional/adapter/grants/ --profile dremio_cloud --exitfirst -vv
 
   run-softwareUP-test:
     runs-on: ubuntu-latest
